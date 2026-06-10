@@ -1,12 +1,10 @@
 # Pausa Activa — ADIUM
 
-Pantalla dinámica para el instructivo **EINS-AUY-014** de Salud Ocupacional de ADIUM Uruguay.
+Pantalla dinámica de pausas activas para Salud Ocupacional. Guía a los colaboradores a través de un circuito de estiramientos (cuello, espalda, brazos y piernas, con respiración consciente) y un modo de descanso visual basado en la regla 20/20/20.
 
-Guía a los colaboradores a través de un circuito de pausas activas (estiramientos de cuello, espalda, brazos y piernas, con respiración consciente) y un modo de descanso visual basado en la regla 20/20/20.
+Desarrollada para ADIUM Uruguay como parte del servicio de asesoría en Salud Ocupacional.
 
 **App en línea:** https://dremilianofigueron.github.io/pausa_activa_ADIUM/
-
-Creado por Dr. Emiliano Figuerón — Salud Ocupacional ADIUM Uruguay.
 
 ## Funcionalidades
 
@@ -26,3 +24,11 @@ npm run dev
 ## Publicación
 
 Cada push a `main` se publica automáticamente en GitHub Pages mediante GitHub Actions (`.github/workflows/deploy.yml`).
+
+## Licencia
+
+© 2026 Dr. Emiliano Figuerón
+
+Este trabajo está licenciado bajo [Creative Commons Atribución-NoComercial-SinDerivadas 4.0 Internacional (CC BY-NC-ND 4.0)](https://creativecommons.org/licenses/by-nc-nd/4.0/).
+
+Podés compartir y redistribuir este material siempre que se atribuya al autor original, no se use con fines comerciales y no se realicen modificaciones.

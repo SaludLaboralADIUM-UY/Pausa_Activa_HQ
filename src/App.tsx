@@ -1145,7 +1145,7 @@ export default function App() {
         </div>
 
         <div className="flex items-center gap-3">
-          <p className="font-medium text-[#5e5c54]">Creado por Dr. Emiliano Figuerón</p>
+          <p className="font-medium text-[#5e5c54]">© 2026 Dr. Emiliano Figuerón</p>
           <span className="text-[#a4a29a] font-light">|</span>
           <p className="font-medium text-[#5e5c54]">Salud Ocupacional ADIUM Uruguay</p>
         </div>
