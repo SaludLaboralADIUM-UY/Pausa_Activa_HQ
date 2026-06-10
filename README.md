@@ -1,20 +1,28 @@
-<div align="center">
-<img width="1200" height="475" alt="GHBanner" src="https://ai.google.dev/static/site-assets/images/share-ais-513315318.png" />
-</div>
+# Pausa Activa — ADIUM
 
-# Run and deploy your AI Studio app
+Pantalla dinámica para el instructivo **EINS-AUY-014** de Salud Ocupacional de ADIUM Uruguay.
 
-This contains everything you need to run your app locally.
+Guía a los colaboradores a través de un circuito de pausas activas (estiramientos de cuello, espalda, brazos y piernas, con respiración consciente) y un modo de descanso visual basado en la regla 20/20/20.
 
-View your app in AI Studio: https://ai.studio/apps/22a73225-7121-4238-848a-03fcbec36872
+**App en línea:** https://dremilianofigueron.github.io/pausa_activa_ADIUM/
 
-## Run Locally
+Creado por Dr. Emiliano Figuerón — Salud Ocupacional ADIUM Uruguay.
 
-**Prerequisites:**  Node.js
+## Funcionalidades
 
+- **Pausas activas**: circuito guiado de 10 ejercicios con temporizador, indicaciones por fase y lado (derecho/izquierdo), e imágenes de referencia.
+- **Fatiga visual**: ejercicio 20/20/20 con temporizador de 20 segundos de alto contraste y recomendaciones de salud visual.
+- **Cierre del circuito**: recomendación final de hidratación y movimiento.
 
-1. Install dependencies:
-   `npm install`
-2. Set the `GEMINI_API_KEY` in [.env.local](.env.local) to your Gemini API key
-3. Run the app:
-   `npm run dev`
+## Desarrollo local
+
+**Requisitos:** Node.js
+
+```bash
+npm install
+npm run dev
+```
+
+## Publicación
+
+Cada push a `main` se publica automáticamente en GitHub Pages mediante GitHub Actions (`.github/workflows/deploy.yml`).
