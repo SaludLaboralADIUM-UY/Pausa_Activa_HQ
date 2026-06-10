@@ -1,0 +1,8 @@
+{
+  "name": "Transicion de Pausa Activa",
+  "description": "Una guia interactiva paso a paso para realizar transiciones seguras de estiramiento de cuello durante pausas activas.",
+  "requestFramePermissions": [],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}
