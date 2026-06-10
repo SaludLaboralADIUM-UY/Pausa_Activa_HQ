@@ -173,6 +173,15 @@ export default function App() {
     setIsPlaying(false);
   };
 
+  // Restart only the current phase timer (countdown + progress ring)
+  const restartPhaseTimer = () => {
+    phaseElapsedRef.current = 0;
+    setRingProgress(0);
+    setSecondsRemaining(phase === 'hold'
+      ? getStepHoldDuration(activeStep, routineIndex)
+      : Math.floor(TRANSITION_DURATION));
+  };
+
   // Switch between body and eye-fatigue modes
   const goBodyMode = () => {
     setScreenMode('body');
@@ -1012,12 +1021,20 @@ export default function App() {
                     ) : (
                       <>
                         <Play className="w-3.5 h-3.5 fill-white text-white" />
-                        <span>Reanudar Ciclo</span>
+                        <span>{currentRoutine.id === 'respiracion' && activeStep === 0 ? 'Iniciar Ciclo' : 'Reanudar Ciclo'}</span>
                       </>
                     )}
                   </button>
 
-
+                  <button
+                    id="btn-restart-phase"
+                    onClick={restartPhaseTimer}
+                    title="Reiniciar fase"
+                    aria-label="Reiniciar fase"
+                    className="flex items-center justify-center w-9 h-9 rounded-full bg-[#efebe4] hover:bg-[#e4dfd6] text-[#30475c] border border-[#dfdacd] transition-all duration-300"
+                  >
+                    <RefreshCw className="w-4 h-4" />
+                  </button>
                 </div>
               </div>
 
@@ -1124,7 +1141,7 @@ export default function App() {
       <footer id="app-footer" className="w-full bg-[#eae5dd] py-5 px-8 shrink-0 border-t border-[#dfdfdf] flex flex-col md:flex-row items-center justify-between gap-4 text-xs text-[#5e5c54]">
         <div className="flex items-center gap-2">
           <Monitor className="w-4 h-4 text-[#30475c]" />
-          <span>Pantalla dinámica para instructivo EINS-AUY-014</span>
+          <span>Pantalla dinámica para pausas activas - 2026</span>
         </div>
 
         <div className="flex items-center gap-3">
