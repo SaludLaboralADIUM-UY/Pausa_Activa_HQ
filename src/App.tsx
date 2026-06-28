@@ -62,18 +62,18 @@ const getStepSideStatus = (routId: string, stepIdx: number, mirrored: boolean): 
 const asset = (path: string) => import.meta.env.BASE_URL + path.replace(/^\//, '');
 
 const AREAS_TRABAJO = [
-  'Administrativo Deposito',
+  'Administrativo Depósito',
   'Administrativo Gerencia',
-  'Administrativo Produccion',
+  'Administrativo Producción',
   'Asuntos Regulatorios',
-  'Calidad - Gestion documental',
+  'Calidad - Gestión documental',
   'Calidad - Licencias',
   'Calidad - Operativa',
   'Calidad - QA',
   'Calidad - QC',
   'Costos',
   'Gerencia',
-  'Ingenieria / EHS',
+  'Ingeniería / EHS',
   'RRHH',
 ];
 
