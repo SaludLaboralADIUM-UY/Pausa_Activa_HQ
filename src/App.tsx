@@ -61,30 +61,9 @@ const getStepSideStatus = (routId: string, stepIdx: number, mirrored: boolean): 
 
 const asset = (path: string) => import.meta.env.BASE_URL + path.replace(/^\//, '');
 
-const AREAS_TRABAJO = [
-  'Administrativo Depósito',
-  'Administrativo Gerencia',
-  'Administrativo Producción',
-  'Asuntos Regulatorios',
-  'Calidad - Gestión documental',
-  'Calidad - Licencias',
-  'Calidad - Operativa',
-  'Calidad - QA',
-  'Calidad - QC',
-  'Costos',
-  'Gerencia',
-  'Ingeniería / EHS',
-  'RRHH',
-];
 
 export default function App() {
   const [isDarkMode, setIsDarkMode] = useState<boolean>(false);
-  const showAreaSelector = import.meta.env.VITE_SHOW_AREA_SELECTOR !== 'false';
-  const [selectedArea, setSelectedArea] = useState<string | null>(
-    () => localStorage.getItem('adium_area') ?? null
-  );
-  const [areaDropdownOpen, setAreaDropdownOpen] = useState<boolean>(false);
-  const areaDropdownRef = useRef<HTMLDivElement>(null);
   const [isPlaying, setIsPlaying] = useState<boolean>(false); // Start paused — user must press Reanudar Ciclo
   const [routineIndex, setRoutineIndex] = useState<number>(0);
   const [activeStep, setActiveStep] = useState<number>(0);
@@ -227,30 +206,6 @@ export default function App() {
     setSecondsRemaining(phase === 'hold'
       ? getStepHoldDuration(activeStep, routineIndex)
       : Math.floor(TRANSITION_DURATION));
-  };
-
-  // Close area dropdown when clicking outside
-  useEffect(() => {
-    const handler = (e: MouseEvent) => {
-      if (areaDropdownRef.current && !areaDropdownRef.current.contains(e.target as Node)) {
-        setAreaDropdownOpen(false);
-      }
-    };
-    document.addEventListener('mousedown', handler);
-    return () => document.removeEventListener('mousedown', handler);
-  }, []);
-
-  const handleSelectArea = (area: string) => {
-    setSelectedArea(area);
-    localStorage.setItem('adium_area', area);
-    setAreaDropdownOpen(false);
-    // Fire GA4 event
-    if (typeof window !== 'undefined' && (window as any).gtag) {
-      (window as any).gtag('event', 'seleccionar_area', {
-        event_category: 'registro_usuario',
-        area_trabajo: area,
-      });
-    }
   };
 
   // Switch between body and eye-fatigue modes
@@ -669,44 +624,6 @@ export default function App() {
           className="h-28 object-contain"
         />
 
-        {/* Area selector */}
-        {showAreaSelector && <div className="ml-auto" ref={areaDropdownRef}>
-          <button
-            onClick={() => setAreaDropdownOpen(!areaDropdownOpen)}
-            className="flex items-center gap-2 px-4 py-2 rounded-xl bg-white/15 hover:bg-white/25 text-white text-sm font-medium transition-all duration-200 border border-white/20"
-          >
-            <span className="text-white/60 text-xs font-normal mr-1">Área:</span>
-            <span className="max-w-[180px] truncate">
-              {selectedArea ?? 'Seleccionar'}
-            </span>
-            <ChevronRight className={`w-4 h-4 transition-transform duration-200 ${areaDropdownOpen ? 'rotate-90' : ''}`} />
-          </button>
-
-          {/* Dropdown */}
-          {areaDropdownOpen && (
-            <div className="absolute right-8 top-full mt-2 w-64 bg-white rounded-2xl shadow-2xl border border-gray-100 overflow-hidden z-[100]">
-              <div className="px-4 py-3 border-b border-gray-100">
-                <p className="text-xs font-bold text-[#30475c] uppercase tracking-wider">Seleccionar área de trabajo</p>
-              </div>
-              <ul className="max-h-72 overflow-y-auto py-2">
-                {AREAS_TRABAJO.map(area => (
-                  <li key={area}>
-                    <button
-                      onClick={() => handleSelectArea(area)}
-                      className={`w-full text-left px-4 py-2.5 text-sm transition-colors duration-150 ${
-                        selectedArea === area
-                          ? 'bg-[#30475c] text-white font-semibold'
-                          : 'text-[#2f2e27] hover:bg-[#f5f3ef]'
-                      }`}
-                    >
-                      {area}
-                    </button>
-                  </li>
-                ))}
-              </ul>
-            </div>
-          )}
-        </div>}
       </header>
 
       {/* 2. MAIN WORKSPACE */}
